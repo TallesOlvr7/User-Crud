@@ -3,7 +3,7 @@ import api from '../../services/api/config'
 import { useEffect, useState } from "react"
 import DeleteUserModal from '../DeleteUserModal'
 import UserInfoModal from '../UserInfoModal'
-import UpdateUserForm from '../UpdateUserForm'
+import UpdateUserForm from '../UpdateUserFormModal'
 
 export default function UsersList({ action }) {
     const { method, message } = useAction(action)

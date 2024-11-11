@@ -6,9 +6,7 @@ class UserController {
     async index(req, res) {
         try {
             const users = await User.findAll()
-            return res.status(200).json({
-                data: users
-            })
+            return res.status(200).json(users)
         } catch (e) {
             return res.status(400).json({
                 error: e.message
@@ -26,9 +24,7 @@ class UserController {
                 telefone,
                 dataNascimento
             })
-            return res.status(201).json({
-                data: user
-            })
+            return res.status(201).json(user)
         } catch (e) {
             let errors = []
             
@@ -56,9 +52,7 @@ class UserController {
                     error: "Usuário não encontrado"
                 })
             }
-            return res.status(200).json({
-                data: user
-            })
+            return res.status(200).json(user)
         } catch (e) {
             return res.status(400).json({
                 error: e.message

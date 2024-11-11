@@ -16,8 +16,8 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING,
         allowNull: false,
         unique:{
-            args: true,  // Habilita a validação de unicidade
-            msg: 'O email já está em uso' // Mensagem personalizada de erro
+            args: true,
+            msg: 'O email já está em uso' 
         },
 
         validate: {
