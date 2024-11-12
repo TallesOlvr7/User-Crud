@@ -13,7 +13,11 @@
     "@heroicons/react": "^2.1.5",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
+    "critters": "^0.0.23",
+    "fs": "^0.0.1-security",
     "next": "15.0.3",
+    "primeicons": "^7.0.0",
+    "primereact": "^10.8.4",
     "react": "18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.2"

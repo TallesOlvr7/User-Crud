@@ -3,22 +3,17 @@ import api from '../services/api/config'
 
 export default function useAction(action) {
     let method
-    const [message, setMesage] = useState(null)
+    const [message, setMessage] = useState(null)
 
     if(action == 'Deletar') {
         method = async (id) =>{
             try{
                 const response = await api.delete(`/usuarios/${id}`)
-                console.log(response.data)
-                setMesage(response.data.message)
+                setMessage(response.data.message)
             } catch (error) {
-                setMesage(error)
+                setMessage(error)
             }
         }
-    }
-
-    if(action == 'Atualizar'){
-
     }
 
     return {method, message}

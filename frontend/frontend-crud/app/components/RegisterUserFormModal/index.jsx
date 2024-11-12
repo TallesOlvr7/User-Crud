@@ -1,11 +1,10 @@
 import { useForm } from "react-hook-form"
 import { useState, useEffect, useRef } from "react"
-
 import api from '@/app/services/api/config'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { ExclamationTriangleIcon, UserCircleIcon } from '@heroicons/react/24/outline'
 
-export default function UpdateUserForm({ user, status, closeModal, handleToast}) {
+export default function RegisterUserFormModal({status, closeModal, handleToast}) {
     const [open, setOpen] = useState(status)
     const [isError, setIsError] = useState(false)
     const [message, setMessage] = useState(null)
@@ -13,8 +12,8 @@ export default function UpdateUserForm({ user, status, closeModal, handleToast})
 
     const onSubmit = async (data) => {
         try {
-            const response = await api.put(`/usuarios/${user.id}`, data)
-            setMessage('Usuário atualizado com sucesso')
+            const response = await api.post(`/usuarios`, data)
+            setMessage('Usuário registrado com sucesso')
             handleToast()
             closeModal()
         } catch (error) {
@@ -22,14 +21,6 @@ export default function UpdateUserForm({ user, status, closeModal, handleToast})
             setIsError(true)
         }
     }
-    useEffect(() => {
-        if (user) {
-            setValue('nome', user.nome || '')
-            setValue('email', user.email || '')
-            setValue('telefone', user.telefone || '')
-            setValue('dataNascimento', user.dataNascimento || '')
-        }
-    }, [user, setValue])
 
     return (
         <>
@@ -56,7 +47,7 @@ export default function UpdateUserForm({ user, status, closeModal, handleToast})
 
                                         <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left flex flex-col justify-center">
                                             <DialogTitle as="h3" className="text-base font-semibold text-gray-900">
-                                                Atualizar informações do usuário
+                                                Registrar usuário
                                             </DialogTitle>
                                             <div className="mt-2 flex flex-col w-full text-center">
                                                 {isError ? (
@@ -127,8 +118,8 @@ export default function UpdateUserForm({ user, status, closeModal, handleToast})
                                                         <input
                                                             severity="success"
                                                             type="submit"
-                                                            value="Atualizar"
-                                                            className="cursor-pointer bg-blue-500 text-white py-2 px-6 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200"
+                                                            value="Registrar"
+                                                            className="cursor-pointer bg-green-500 text-white py-2 px-6 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200"
                                                         />
                                                     </div>
                                                 </form>
