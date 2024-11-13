@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
-export default function DeleteUserModal({ user, status, closeModal, method, action }) {
+export default function DeleteUserModal({ user, status, closeModal, method, handleToast }) {
   const [open, setOpen] = useState(status)
 
   return (
@@ -45,8 +45,9 @@ export default function DeleteUserModal({ user, status, closeModal, method, acti
                 type="button"
                 onClick={() => {
                   setOpen(false)
-                  closeModal()
                   method(user.id)
+                  closeModal()
+                  handleToast()
                 }}
                 className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
               >

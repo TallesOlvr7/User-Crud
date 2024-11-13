@@ -20,7 +20,8 @@
     "primereact": "^10.8.4",
     "react": "18.3.1",
     "react-dom": "^18.3.1",
-    "react-hook-form": "^7.53.2"
+    "react-hook-form": "^7.53.2",
+    "react-input-mask": "^2.0.4"
   },
   "devDependencies": {
     "eslint": "^8",

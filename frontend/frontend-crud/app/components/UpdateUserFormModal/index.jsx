@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form"
 import { useState, useEffect, useRef } from "react"
-
+import { InputMask } from "primereact/inputmask"
 import api from '@/app/services/api/config'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { ExclamationTriangleIcon, UserCircleIcon } from '@heroicons/react/24/outline'
 
-export default function UpdateUserForm({ user, status, closeModal, handleToast}) {
+export default function UpdateUserForm({ user, status, closeModal, handleToast }) {
     const [open, setOpen] = useState(status)
     const [isError, setIsError] = useState(false)
     const [message, setMessage] = useState(null)
@@ -98,14 +98,15 @@ export default function UpdateUserForm({ user, status, closeModal, handleToast})
 
                                                     <div className="pt-3 flex flex-col gap-1">
                                                         <label htmlFor="telefone">Telefone</label>
-                                                        <input
+                                                        <InputMask
+                                                            mask="(99) 99999-9999" placeholder="(99)99999-9999"
                                                             type="text"
                                                             id="telefone"
                                                             {...register('telefone', {
                                                                 pattern: { value: /^\(\d{2}\) \d{5}-\d{4}$/, message: 'Telefone inválido' }
                                                             })}
                                                             className="py-1 px-2 bg-gray-400 rounded focus:outline-none focus:ring-0 focus:border-transparent"
-                                                            placeholder="(XX) XXXXX-XXXX"
+
                                                         />
                                                         {errors.telefone && <p className="text-red-500 text-sm">{errors.telefone.message}</p>}
                                                     </div>
